@@ -1,0 +1,44 @@
+import tiposDeViajes.*
+
+describe "Viajes de ciudad"{
+	var cn1 = new ExcursionACiudad()
+	var ct1 = new ExcursionACiudadTropical()
+	var cn2 = new ExcursionACiudad()
+	var ct2 = new ExcursionACiudadTropical()
+	var ct3 = new ExcursionACiudadTropical()
+	
+	fixture{
+		cn1.cantidadDeAtracciones(4)
+		ct1.cantidadDeAtracciones(4)
+		cn2.cantidadDeAtracciones(8)
+		ct2.cantidadDeAtracciones(8)
+		ct3.cantidadDeAtracciones(10)
+	}
+	test "Viaje CN1"{
+		assert.equals(2, cn1.diasDeActividad())
+		assert.notThat(cn1.esfuerzo())
+		assert.notThat(cn1.bronceado())
+	}
+	test "Viaje CT1"{
+		assert.equals(3, ct1.diasDeActividad())
+		assert.notThat(ct1.esfuerzo())
+		assert.that(ct1.bronceado())
+	}
+	test "Viaje CN2"{
+		assert.equals(4, cn2.diasDeActividad())
+		assert.that(cn2.esfuerzo())
+		assert.notThat(cn2.bronceado())
+}
+	test "Viaje CT2"{
+		assert.equals(5, ct2.diasDeActividad())
+		assert.that(ct2.esfuerzo())
+		assert.that(ct2.bronceado())
+	}
+	test "Viaje CT3"{
+		assert.equals(6, ct3.diasDeActividad())
+		assert.notThat(ct3.esfuerzo())
+		assert.that(ct3.bronceado())
+	}
+}
+
+//EN LOS TEST SOLO HICE LOS QUE PEDIA EL ENUNCIADO

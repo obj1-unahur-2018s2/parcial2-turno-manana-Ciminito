@@ -1,0 +1,33 @@
+import tiposDeViajes.*
+import socios.*
+
+describe "Socios"{
+	var roque = new Socio()
+	var ana = new Socio()
+	var playa1 = new ViajesDePlaya()
+	var playa2 = new ViajesDePlaya()
+	var gym = new ClaseDeGym()
+	
+	fixture{
+		playa1.largoDePlaya(1000)
+		playa2.largoDePlaya(2000)
+		roque.cantidadDeActividades(2)
+		ana.cantidadDeActividades(3)
+		roque.agregarActividad(playa1)
+		roque.agregarActividad(playa2)
+		ana.agregarActividad(playa1)
+		ana.agregarActividad(playa2)
+		ana.agregarActividad(gym)
+		
+	}
+	test "Roque en la Playa"{
+		assert.that(roque.adoradorDelSol())
+		assert.equals([playa2], roque.actividadesEsforzadas())
+		assert.throwsExceptionWithMessage("No se pueden agregar mas actividades", {roque.agregarActividad(gym)})
+	}
+	test "Ana en la playa y en el gym"{
+		assert.notThat(ana.adoradorDelSol())
+		assert.equals([playa2, gym], ana.actividadesEsforzadas())
+	}
+}
+//EN LOS TEST SOLO HICE LOS QUE PEDIA EL ENUNCIADO

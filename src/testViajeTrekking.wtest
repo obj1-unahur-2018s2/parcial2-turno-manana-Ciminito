@@ -1,0 +1,32 @@
+import tiposDeViajes.*
+
+describe "Salida de trekking"{
+	var trek1 = new SalidaDeTrekking()
+	var trek2 = new SalidaDeTrekking()
+	var trek3 = new SalidaDeTrekking()
+	
+	fixture{
+		trek1.kilometrosDeSendero(100)
+		trek1.diasDeSol(130)
+		trek2.kilometrosDeSendero(50)
+		trek2.diasDeSol(240)
+		trek3.kilometrosDeSendero(250)
+		trek3.diasDeSol(130)
+	}
+	test "Trekking 1"{
+		assert.equals(2, trek1.diasDeActividad())
+		assert.that(trek1.esfuerzo())
+		assert.notThat(trek1.bronceado())
+	}
+	test "Trekking 2"{
+		assert.equals(1, trek2.diasDeActividad())
+		assert.notThat(trek2.esfuerzo())
+		assert.that(trek2.bronceado())
+	}
+	test "Trekking 3"{
+		assert.equals(5, trek3.diasDeActividad())
+		assert.that(trek3.esfuerzo())
+		assert.that(trek3.bronceado())
+	}
+}
+//EN LOS TEST SOLO HICE LOS QUE PEDIA EL ENUNCIADO
